@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Zaira Mharie Sandoval - Webdesign Portfolio</title>
+        <link href="https://fonts.googlrapis.com/css2?family=Poppins:wght@300;400;600;700&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/all.min.css">
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            body { 
+                font-family: 'Roboto', sans-serif;
+                overflow-x: hidden;
+                cursor: none;
+                background: linear-gradient(180deg,#4FC3F7 0%, #0288D1 50%, #0D47A1 100% );
+                background-attachment:fixed;
+                min-height: 100vh;
+            }
+            /* Cute Robot Cursor */
+            .robot {
+                position: fixed;
+                width: 40px;
+                height: 40px;
+                pointer-events: none;
+                z-index: 9999;
+                transition: transform 0.1s ease-out;
+                animation: bob 2s infinite ease-in-out;
+            }
+
+            .robot::before {
+                content: '';
+                position: absolute;
+                width: 30px;
+                height: 25px;
+                background: #fff;
+                border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%; 
+                top: 5px;
+                left: 5px;
+                box-shadow: 0 4px 8px 
+                rgba(0,0,0,0.2);
+            }
+            .robot::after {
+                content:'robot';
+                position: absolute;
+                font-size: 20px;
+                top: 8px;
+                left: 12px;
+                animation: blink 3s infinite;
+            }
+
+            @keyframes bob {
+                0%, 100% { transform: translateY(0px); }
+                50% { transform: translateY(-5px); }
+            }
+
+            @keyframes blink { 0%, 90%, 100% {transform: scale (1); } 
+            95% {transform: scale(1.1);} }
+
+            /* Navigation */ 
+            nav {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                z-index: 1000;
+                display: flex;
+                gap: 15px;
+            }
+
+            nav a {
+                background: rgba(255,255,255,0.9);
+                color: #0D47A1;
+                text-decoration: none;
+                padding: 12px 20px;
+                border-radius: 25px;
+                font-weight: 600;
+                font-size: 14px;
+                transition: all 0.3s ease;
+                backdrop-filter: blur(10px);
+                box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            }
+
+            nav a:hover { 
+                background: #fff;
+                transform: translateY(-3px);
+                box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+                color: #0288D1;
+            }
+
+            /*Sections */ 
+            section { 
+                min-height: 100vh;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 80px 20px;
+                max-width: 1200px;
+                margin: 0 auto;
+                width: 100%;
+            }
+
+            h1, h2 { 
+                font-family: 'Poppins', sans-serif;
+                color: white;
+                text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            }
+            /* Homw */
+            #home { 
+                text-align: center;
+                flex-direction: column;
+            }
+
+            #home1 { 
+                font-size: clamp(3rem, 8vw, 6rem);
+                margin-bottom: 20px;
+                animation: fadeInUp 1s ease;
+            }
+
+            #home .subtitle {
+                font-size: clamp(1.2rem, 4vw, 2rem);
+                margin-bottom: 40px;
+                opacity: 0.9;
+                animation: fadeInUp 1s ease 0.2s both;
+            }
+
+            .cta-button {
+                background: rgba(225,225,225,0.95);
+                color: #0D47A1;
+                padding: 18px 40px;
+                border: none;
+                border-radius: 50px;
+                font-size: 1.2rem;
+                font-weight: 600;
+                cursor: none;
+                transition: all 0.3s ease;
+                backdrop-filter: blur(10px);
+                box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+                animation: fadeInup 1s ease 0.4s both;
+            }
+
+             .cta-button:hover { 
+                transform: translateY(-5px) scale(1.05);
+                box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+                background: whie;
+             }
+
+            /* About */ 
+            #about { 
+            flex-direction: column;
+            text-align: center;
+            gap: 30px;
+            }
+
+            #about h2 { 
+                max-width: 800px;
+                line-height: 1.8;
+                font-size: 1.2rem;
+                opacity: 0.95;
+            }
+       
+            .skills-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 20px;
+                backdrop-filter: blur(10px);
+                border: 1px solid rgba(255,255,255,0.2);
+                transition: all 0.3s ease;
+                text-align: center;
+            }
+
+            .skill-icon { 
+                font-size: 3rem;
+                margin-bottom: 10px;
+            }
+             
+            /* Achievements */ 
+            #achievements { 
+                flex-direction: column;
+                text-align: center;
+            }
+            .achievements-grid { 
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                gap: 30px;
+                margin-top: 50px;
+                width: 100%;
+            }
+
+            .achievement-card {
+                background: rgba(255,255,255,0.1);
+                padding: 30px;
+                border-radius: 20px;
+                backdrop-filter: blur(15px);
+                border: 1px solid rgba(255,255,255,0.3);
+                transition: all 0.4s ease;
+                position: relative;
+                overflow: hidden;
+            }
+
+            .achievement-card::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: -100%;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3) transparent);
+                transition: left 0.5s;
+            }
+
+            .achievement-card:hover::before {
+                left: 100%;
+            }
+
+            .achievement-card:hover {
+                transform: translateY(-15px) scale(1.02);
+                background: rgba(255,255,255,0.2);
+                box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            }
+
+            .achievement-icon {
+                font-size: 4rem;
+                margin-bottom: 20px;
+                color: #FFD700;
+            }
+
+            /* Contact */
+            #contact {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .contact-form {
+                max-width: 600px;
+                width: 100px;
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .form-group { 
+                display: flex;
+                flex-direction: column;
+            }
+
+            .form-group input,
+            .form-group textarea { 
+                padding: 15px;
+                border: none;
+                border-radius: 15px;
+                background: rgba(255,255,255,0.9);
+                font-size: 1rem;
+                transition: all 0.3s ease;
+                backdrop-filter: blur(10px);
+            }
+
+            .form-group input:focus,
+            .form-group textarea:focus {
+                outline: none;
+                background: white;
+                transform: scale(1.02);
+                box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            }
+            
+            .submit-btn {
+                background: linear-gradient(45deg, #4FC3F7,#0288D1);
+                color: white;
+                border: none;
+                padding: 18px;
+                border-radius: 15px;
+                font-size: 1.1rem;
+                font-weight: 600;
+                cursor: none;
+                transition: all 0.3s ease;
+            }
+
+            .submit-btn:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 15px 30px rgba(13,71,161,0.4);
+            }
+
+            .social-links {
+                margin-top: 40px;
+                display: flex;
+                gap: 20px;
+                justify-content: center;
+            }
+
+            .social-links a {
+                width: 60px;
+                height: 60px;
+                background: rgba(255,255,255,0.9);
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 1.5rem;
+                color: #0D47A1;
+                transition: all 0.3s ease;
+                text-decoration: none;
+            }
+
+            .social-links a:hover {
+                transform: translateY(-5px) scale(1.1);
+                background: white;
+                box-shadow: 0 10px 25px rgba(0,0,0,0.2)
+            } 
+
+            /* Animations */
+            @keyframes fadeInUp {
+                from {
+                    opacity: 0;
+                    transform: translateY(50px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+
+            /* Responsive */
+            @media (max-width: 768px) {
+                nav {
+                    top: 15px;
+                    right: 15px;
+                    flex-direction: column;
+                }
+
+                section {
+                    padding: 60px 15px;
+                }
+
+                section { 
+                    padding: 60px 15px;
+                }
+            }
+        </style>
+    </head> 
+    <body> 
+        <!-- Cute Robot Cursor -->
+         <div class="robot"></div>
+
+         <!-- Navigation -->
+          <nav> 
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="achievements">Achievements</a>
+            <a href="#contact">Contact</a>
+          </nav>
+
+          <!-- Home Section -->
+           <section id="home">
+            <h1>Zaira Mharie Sandoval</h1>
+            <p class="subtitle">Grade 11 Computer Programming Student | Coder & Researcher<br> Dumaguete City, Philippines</p>
+
+                  <button class="cta-button"
+                  onclick="scrollToSection('about')">Explore My Work</button>
+           </section>
+
+           <!-- About Section -->
+            <section id="about">
+                <h2>About Me</h2>
+                <div class="about-content">
+                    Im a passionate Grade 11 Computer Programming student from Asian College in Dumaguete City. 
+                    I like to write novels, to read novels, manwhas, manga's, and also watch Anime's and Movies.
+                    I like coding in C++ and CSS though sometimes its difficult but i like a little challenge.
+                    I also like learning new languges like Russian and Japanese.
+                </div>
+                <div class="skills-grid">
+                    <div class="skill-card">
+                        <div class="skill-icon"><i class="fas fa-code"></i></div>
+                        <h3>C++ Programming</h3> 
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-icon"><i class="fab fa-css3-alt"></i></div>
+                    <h3> CSS & Web Design</h3>
+                      </div>
+                      <div class="skills-card">
+                        <div class="skills-icon"><i class="fas fa-file-alt></i></div>
+                        <h3>Writing novels</h3>
+                      </div>
+                      <div class="skill-card">
+                      <div class="skill-icon"><i class="fas fa-globe"></i></div>
+                      <h3>Multilingual</h3>
+                      </div>
+                </div>
+            </section>
+
+            <!-- Achievements Section -->
+             <section id="achievements">
+                <h2> My Achievements</h2>
+                <div class="achievements-grid">
+                    <div class="achievements-card"></div>
+                    <div class="achievements-icon"><i class="fas fa-trophy"></i></div>
+                    <h3>Honor Student</h3>
+                    <p>I havent Achieve a lot of things but i've been an honor students troughout elementary and highschool</p>
+                </div>
+                <div class="achievement-card"><i class="as fa-medal"></i></div>
+            </div>
+            </section>
+
+            <!-- Contact Section -->
+             <section id="contact">
+                <h2>Get in touch</h2>
+                <form class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+                    <div class="form-group">
+                        <input type="text" name="name" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" name="email" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
+                <div class="social-limks">
+                    <a href="#"><i class="fab fa-github"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="mailto:zaira@example.com"><iclass="fas fa-envelope"></i></a>
+                    <a href="#"><i class="fab fa-discord"></i></a>
+                </div>
+             </section>
+
+             <script> 
+                // Robot follows cursor
+                const robot = 
+                document.querySelector('.robot');
+                document.addEventListener('mousemove',(e) => { 
+                    robot.style.left = e.clientX + 'px';
+                    robot.style.top = e.clientY + 'px';
+                });
+
+                // Smooth scrolling
+                function scrollToSection(sectionId) {
+
+                    document.getElementByid(sectionId).scrollIntoView
+                    ({
+                        behavior: 'smooth'
+                    });
+                }
+
+                // Nav links smooth scroll 
+                document.querySelectorALL('nav a').forEach(link => {
+                    limk.addEventListener('clink', (e) =>
+                {
+                    e.preventDefault();
+                    const targetId=
+                    limk.getAttribute('href').substring(1);
+                    scrollToSection(targetId);
+                });
+                });
+
+                // Form submission feedback 
+
+                document.querySelector('.contact-form').addEventListener('submit', function() {
+                    const btn = 
+                    document.querySelector('.submit-btn');
+                    btn.textContent = 'Sending...';
+                    btn.style.background = '#FFD700';
+                });
+             </script>
+    </body>
+</html>
